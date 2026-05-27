@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIP Panel Debrecen – MgO SIP Technológia | GV Group</title>
+<meta name="description" content="MgO Grafitos SIP panel házak Debrecenben. A1 tűzálló, 50 év garancia, passzívház szint. GV Group kivitelezéssel – kulcsrakész átadás 4–6 hónap alatt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:     #FAF8F5;
+  --cream-mid: #F2EDE6;
+  --cream-dk:  #E8E0D5;
+  --navy:      #1A2744;
+  --navy-mid:  #243352;
+  --navy-lt:   #2E4070;
+  --gold:      #B8832A;
+  --gold-lt:   #D4A050;
+  --gold-pale: rgba(184,131,42,.12);
+  --gold-glow: rgba(184,131,42,.25);
+  --ink:       #1A1A1A;
+  --ink-mid:   #3D3D3D;
+  --ink-lt:    #6B6560;
+  --white:     #FFFFFF;
+  --line:      rgba(26,39,68,.1);
+  --line-gold: rgba(184,131,42,.2);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--cream);}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:0;}
+::selection{background:var(--gold);color:var(--white);}
+
+/* ── CUSTOM CURSOR ── */
+*, *::before, *::after { cursor: default; }
+a, button { cursor: pointer; }
+
+/* ── NAV ── */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:28px 0;
+  transition:all .5s ease;
+}
+nav.scrolled {
+  background:rgba(250,248,245,.97);
+  backdrop-filter:blur(20px);
+  padding:16px 0;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 2px 32px rgba(26,39,68,.06);
+}
+.nav-inner {
+  max-width:1280px;margin:0 auto;padding:0 48px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo {
+  display:flex;align-items:center;gap:16px;
+  text-decoration:none;
+}
+.logo-mark {
+  width:44px;height:44px;
+  position:relative;
+  flex-shrink:0;
+}
+.logo-mark svg { display:block; }
+.logo-text { line-height:1.2; }
+.logo-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:600;
+  color:var(--navy);letter-spacing:.5px;
+}
+.logo-sub {
+  font-size:10px;font-weight:400;
+  color:var(--gold);letter-spacing:3px;
+  text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+}
+.nav-links {
+  display:flex;align-items:center;gap:40px;
+  list-style:none;
+}
+.nav-links a {
+  font-size:12px;font-weight:500;
+  color:var(--ink-lt);
+  text-decoration:none;letter-spacing:1.5px;
+  text-transform:uppercase;
+  transition:color .3s;
+  position:relative;
+}
+.nav-links a::after {
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--gold);
+  transform:scaleX(0);transition:transform .3s;
+  transform-origin:left;
+}
+.nav-links a:hover { color:var(--navy); }
+.nav-links a:hover::after { transform:scaleX(1); }
+.nav-cta {
+  background:var(--navy) !important;
+  color:var(--white) !important;
+  padding:11px 26px;
+  font-size:11px !important;
+  letter-spacing:2px;
+  border:none;
+  transition:all .3s !important;
+}
+.nav-cta::after { display:none !important; }
+.nav-cta:hover {
+  background:var(--gold) !important;
+  color:var(--white) !important;
+}
+.hamburger {
+  display:none;flex-direction:column;gap:6px;
+  cursor:pointer;padding:4px;
+}
+.hamburger span {
+  width:24px;height:1.5px;
+  background:var(--navy);
+  transition:all .3s;
+}
+.mobile-menu {
+  display:none;position:fixed;inset:0;
+  background:var(--navy);z-index:999;
+  flex-direction:column;align-items:center;
+  justify-content:center;gap:44px;
+}
+.mobile-menu.open { display:flex; }
+.mobile-menu a {
+  font-family:'Cormorant Garamond',serif;
+  font-size:40px;font-weight:400;font-style:italic;
+  color:var(--cream);text-decoration:none;
+  letter-spacing:1px;
+  transition:color .3s;
+}
+.mobile-menu a:hover { color:var(--gold-lt); }
+.mobile-close {
+  position:absolute;top:32px;right:40px;
+  font-size:24px;cursor:pointer;
+  color:var(--gold-lt);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:var(--navy);
+}
+.hero-bg {
+  position:absolute;inset:0;
+  background-image:url('https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-newyork-2.jpg');
+  background-size:cover;background-position:center;
+  filter:brightness(.18) saturate(.4);
+  transform:scale(1.08);
+  transition:transform 10s ease;
+}
+.hero-bg.loaded { transform:scale(1); }
+.hero-texture {
+  position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 80% 50%, rgba(184,131,42,.08) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(26,39,68,.8) 0%, transparent 50%);
+  pointer-events:none;
+}
+/* Elegant grain overlay */
+.hero-grain {
+  position:absolute;inset:0;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+.hero-inner {
+  max-width:1280px;margin:0 auto;padding:140px 48px 120px;
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr .5fr;gap:80px;align-items:center;
+}
+.hero-eyebrow {
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:10px;font-weight:500;
+  color:var(--gold-lt);letter-spacing:5px;
+  text-transform:uppercase;
+  margin-bottom:32px;
+  font-family:'DM Sans',sans-serif;
+}
+.hero-eyebrow::before {
+  content:'';width:40px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-lt));
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(72px,8.5vw,128px);
+  font-weight:300;line-height:.9;
+  color:var(--cream);
+  margin-bottom:36px;
+  letter-spacing:-2px;
+}
+.hero h1 em {
+  font-style:italic;
+  color:var(--gold-lt);
+  display:block;
+  font-weight:400;
+}
+.hero h1 strong {
+  font-weight:600;
+  display:block;
+}
+.hero-desc {
+  font-size:15px;font-weight:300;
+  color:rgba(250,248,245,.55);
+  line-height:1.85;
+  max-width:480px;
+  margin-bottom:52px;
+  padding-left:20px;
+  border-left:1px solid rgba(184,131,42,.4);
+}
+.hero-desc b { color:rgba(250,248,245,.85);font-weight:500; }
+.hero-btns { display:flex;gap:16px;flex-wrap:wrap; }
+.btn-primary {
+  background:var(--gold);
+  color:var(--white);
+  padding:16px 40px;
+  font-size:11px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;
+  display:inline-flex;align-items:center;gap:12px;
+  transition:all .3s;
+  font-family:'DM Sans',sans-serif;
+  box-shadow:0 8px 32px rgba(184,131,42,.35);
+}
+.btn-primary:hover {
+  background:var(--gold-lt);
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(184,131,42,.45);
+}
+.btn-ghost {
+  background:transparent;
+  color:rgba(250,248,245,.7);
+  padding:15px 36px;
+  font-size:11px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;
+  border:1px solid rgba(250,248,245,.2);
+  transition:all .3s;
+  font-family:'DM Sans',sans-serif;
+}
+.btn-ghost:hover {
+  border-color:var(--gold-lt);
+  color:var(--gold-lt);
+}
+.hero-panel {
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(250,248,245,.06);
+  border:1px solid rgba(250,248,245,.08);
+}
+.hp-item {
+  padding:28px 24px;
+  background:rgba(26,39,68,.6);
+  text-align:center;
+  transition:background .4s;
+}
+.hp-item:hover { background:rgba(184,131,42,.1); }
+.hp-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:300;
+  color:var(--gold-lt);line-height:1;
+  margin-bottom:8px;
+}
+.hp-label {
+  font-size:10px;font-weight:500;
+  color:rgba(250,248,245,.4);
+  letter-spacing:2px;text-transform:uppercase;
+}
+.hero-scroll {
+  position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  color:rgba(250,248,245,.25);font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+  animation:scrollBounce 2.5s ease-in-out infinite;
+}
+.hero-scroll::after {
+  content:'';width:1px;height:40px;
+  background:linear-gradient(var(--gold),transparent);
+}
+@keyframes scrollBounce {
+  0%,100%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(6px);}
+}
+.hero-curve {
+  position:absolute;bottom:-2px;left:0;right:0;z-index:2;
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background:var(--navy);
+  padding:16px 0;overflow:hidden;
+  position:relative;
+  border-top:1px solid rgba(184,131,42,.15);
+}
+.marquee-track {
+  display:flex;gap:0;
+  animation:marquee 35s linear infinite;
+  width:max-content;
+}
+.marquee-track:hover { animation-play-state:paused; }
+.marquee-item {
+  display:inline-flex;align-items:center;gap:16px;
+  padding:0 44px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;font-weight:400;font-style:italic;
+  color:rgba(250,248,245,.45);
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+.marquee-sep {
+  color:var(--gold);font-style:normal;
+  font-size:12px;opacity:.5;
+}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ── SECTION BASE ── */
+.sec-inner { max-width:1280px;margin:0 auto;padding:0 48px; }
+.sec-pad { padding:120px 0; }
+
+.sec-eyebrow {
+  display:inline-block;
+  font-size:10px;font-weight:600;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  font-family:'DM Sans',sans-serif;
+}
+.sec-eyebrow-lt { color:rgba(184,131,42,.7); }
+.sec-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,5.5vw,72px);
+  font-weight:400;line-height:1.05;
+  letter-spacing:-1px;
+  margin-bottom:24px;
+}
+.sec-title em { font-style:italic;color:var(--gold); }
+.sec-title-lt { color:var(--cream); }
+.sec-sub {
+  font-size:15px;font-weight:300;
+  line-height:1.8;
+  max-width:560px;
+  margin-bottom:64px;
+  color:var(--ink-lt);
+}
+.sec-sub-lt { color:rgba(250,248,245,.5); }
+
+/* ── STATS ── */
+.stats-band {
+  background:var(--cream-mid);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:0;
+}
+.stats-row {
+  display:grid;grid-template-columns:repeat(5,1fr);
+  divide-x:1px solid var(--line);
+}
+.stat-cell {
+  padding:56px 32px;
+  text-align:center;
+  border-right:1px solid var(--line);
+  position:relative;
+  overflow:hidden;
+  transition:background .4s;
+}
+.stat-cell:last-child { border-right:none; }
+.stat-cell::before {
+  content:'';
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:2px;
+  background:var(--gold);
+  transition:width .4s;
+}
+.stat-cell:hover { background:rgba(184,131,42,.04); }
+.stat-cell:hover::before { width:60%; }
+.stat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,5vw,76px);
+  font-weight:300;line-height:1;
+  color:var(--navy);margin-bottom:10px;
+  letter-spacing:-2px;
+}
+.stat-sup { font-size:.45em;vertical-align:super;margin-right:2px;font-weight:400; }
+.stat-label {
+  font-size:11px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);
+  font-family:'DM Sans',sans-serif;
+}
+.stat-note {
+  font-size:12px;color:var(--ink-lt);
+  margin-top:6px;font-weight:300;
+  line-height:1.5;
+}
+
+/* ── MGO SECTION ── */
+.mgo-section { background:var(--white); }
+.mgo-grid {
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:100px;align-items:start;
+}
+.mgo-panel-label {
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;
+  color:var(--navy);margin-bottom:8px;
+  letter-spacing:.3px;
+}
+.mgo-panel-note {
+  font-size:13px;color:var(--ink-lt);
+  margin-bottom:32px;
+}
+.layer-item {
+  display:grid;grid-template-columns:56px 1fr;
+  gap:20px;align-items:start;
+  padding:24px 0;
+  border-bottom:1px solid var(--line);
+  transition:all .3s;
+}
+.layer-item:first-of-type { border-top:1px solid var(--line); }
+.layer-item:hover { background:var(--gold-pale);margin:0 -16px;padding:24px 16px; }
+.layer-num {
+  width:40px;height:40px;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:400;
+  color:var(--gold-lt);
+  flex-shrink:0;
+}
+.layer-text strong {
+  display:block;font-size:15px;font-weight:500;
+  color:var(--navy);margin-bottom:4px;
+}
+.layer-text span { font-size:13px;color:var(--ink-lt);line-height:1.5; }
+.layer-tag {
+  display:inline-block;margin-top:8px;
+  font-size:9px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);
+  background:var(--gold-pale);
+  padding:3px 10px;
+  font-family:'DM Sans',sans-serif;
+}
+.mgo-note-box {
+  margin-top:32px;padding:20px 24px;
+  border-left:2px solid var(--gold);
+  background:var(--cream);
+  font-size:13px;color:var(--ink-lt);line-height:1.7;
+}
+.mgo-note-box a { color:var(--navy);font-weight:500;text-decoration:none;border-bottom:1px solid var(--line-gold); }
+.mgo-facts { display:flex;flex-direction:column;gap:0; }
+.fact-item {
+  display:flex;gap:20px;align-items:flex-start;
+  padding:28px 0;
+  border-bottom:1px solid var(--line);
+}
+.fact-item:first-child { border-top:1px solid var(--line); }
+.fact-ico {
+  width:48px;height:48px;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+  transition:background .3s;
+}
+.fact-item:hover .fact-ico { background:var(--gold); }
+.fact-text strong {
+  display:block;font-size:15px;font-weight:500;
+  color:var(--navy);margin-bottom:6px;
+}
+.fact-text p {
+  font-size:13px;color:var(--ink-lt);
+  line-height:1.65;
+}
+
+/* ── FEATURES 10 ── */
+.features-section { background:var(--navy); }
+.feat-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:1px;
+  background:rgba(250,248,245,.06);
+}
+.feat-card {
+  background:rgba(26,39,68,.8);
+  padding:36px 28px;
+  transition:all .35s;
+  position:relative;overflow:hidden;
+  border:1px solid transparent;
+}
+.feat-card::after {
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:var(--gold);
+  transform:scaleX(0);
+  transition:transform .4s;
+  transform-origin:left;
+}
+.feat-card:hover {
+  background:rgba(184,131,42,.1);
+  border-color:rgba(184,131,42,.2);
+  transform:translateY(-3px);
+}
+.feat-card:hover::after { transform:scaleX(1); }
+.feat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;font-weight:300;
+  color:rgba(250,248,245,.06);
+  line-height:1;margin-bottom:4px;
+  letter-spacing:-1px;
+  transition:color .3s;
+}
+.feat-card:hover .feat-num { color:rgba(184,131,42,.2); }
+.feat-icon { font-size:24px;margin-bottom:12px;display:block; }
+.feat-card h4 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:500;
+  color:var(--cream);margin-bottom:10px;
+  line-height:1.2;
+}
+.feat-card p { font-size:12px;color:rgba(250,248,245,.45);line-height:1.6; }
+
+/* ── COMPARISON ── */
+.comp-section { background:var(--cream-mid); }
+.comp-wrap {
+  overflow-x:auto;
+  border:1px solid var(--line);
+  background:var(--white);
+}
+.comp-table { width:100%;border-collapse:collapse; }
+.comp-table th {
+  padding:22px 28px;
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  text-align:center;
+}
+.comp-table th:first-child { text-align:left;background:var(--cream);color:var(--ink-lt); }
+.col-brick { background:#F5F2EE;color:#6B5E4E; }
+.col-eps   { background:#EEF3F5;color:#3D6070; }
+.col-mgo   { background:var(--navy);color:var(--cream); }
+.col-mgo-tag {
+  display:inline-block;
+  background:var(--gold);color:var(--white);
+  font-size:9px;font-weight:700;
+  padding:2px 10px;
+  letter-spacing:2px;
+  margin-top:6px;
+  font-family:'DM Sans',sans-serif;
+}
+.comp-table td {
+  padding:16px 28px;
+  font-size:13px;
+  border-bottom:1px solid var(--line);
+}
+.comp-table td:first-child { font-weight:500;color:var(--ink-mid);background:var(--cream); }
+.col-brick-c { text-align:center;background:#FAFAF8;color:#6B5E4E; }
+.col-eps-c   { text-align:center;background:#F5F9FB;color:#3D6070; }
+.col-mgo-c   { text-align:center;background:rgba(26,39,68,.04);font-weight:600;color:var(--navy); }
+.comp-table tr:hover td { background:rgba(184,131,42,.03) !important; }
+.chk-y { color:#15803D;font-weight:600; }
+.chk-n { color:#DC2626; }
+.chk-p { color:#D97706; }
+
+/* ── PROCESS ── */
+.process-section { background:var(--white); }
+.process-line {
+  display:grid;grid-template-columns:repeat(5,1fr);
+  position:relative;
+  padding-top:60px;
+}
+.process-line::before {
+  content:'';position:absolute;
+  top:36px;left:8%;right:8%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),rgba(184,131,42,.3),var(--gold),transparent);
+}
+.proc-step {
+  text-align:center;padding:0 20px;
+  position:relative;z-index:1;
+}
+.proc-num {
+  width:72px;height:72px;
+  background:var(--white);
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;font-weight:300;
+  color:var(--navy);
+  margin:0 auto 24px;
+  transition:all .4s;
+  position:relative;
+}
+.proc-num::before {
+  content:'';position:absolute;inset:-4px;
+  border:1px solid transparent;
+  transition:border-color .4s;
+}
+.proc-step:hover .proc-num {
+  background:var(--navy);
+  color:var(--gold-lt);
+  border-color:var(--navy);
+}
+.proc-step:hover .proc-num::before { border-color:var(--gold); }
+.proc-step h4 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:500;
+  color:var(--navy);margin-bottom:10px;
+}
+.proc-step p { font-size:12.5px;color:var(--ink-lt);line-height:1.6; }
+.proc-time {
+  display:inline-block;margin-top:12px;
+  font-size:10px;font-weight:600;
+  color:var(--gold);letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+}
+
+/* ── CERTS ── */
+.certs-section { background:var(--cream-mid); }
+.certs-grid {
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
+}
+.cert-item {
+  display:flex;align-items:center;gap:14px;
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:18px 28px;
+  transition:all .3s;
+}
+.cert-item:hover {
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px var(--gold-pale);
+}
+.cert-ico { font-size:24px; }
+.cert-label strong {
+  display:block;font-size:13px;font-weight:600;
+  color:var(--navy);
+}
+.cert-label span { font-size:11px;color:var(--ink-lt); }
+
+/* ── MODELS ── */
+.models-section { background:var(--white); }
+.filter-bar {
+  display:flex;gap:8px;flex-wrap:wrap;
+  margin-bottom:52px;
+}
+.filter-btn {
+  padding:9px 22px;
+  font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  font-family:'DM Sans',sans-serif;
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--ink-lt);
+  cursor:pointer;
+  transition:all .3s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  background:var(--navy);
+  border-color:var(--navy);
+  color:var(--cream);
+}
+.models-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.model-card {
+  background:var(--cream);
+  overflow:hidden;
+  transition:all .4s;
+  position:relative;
+  border:1px solid var(--line);
+}
+.model-card:hover {
+  box-shadow:0 20px 60px rgba(26,39,68,.15);
+  transform:translateY(-4px);
+  border-color:var(--gold);
+  z-index:2;
+}
+.model-card.hidden-card { display:none; }
+.model-img {
+  width:100%;aspect-ratio:4/3;
+  overflow:hidden;position:relative;
+}
+.model-img img {
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+  filter:saturate(.9);
+}
+.model-card:hover .model-img img { transform:scale(1.06); }
+.model-badge {
+  position:absolute;top:0;right:0;
+  background:var(--navy);
+  color:var(--gold-lt);
+  font-family:'DM Sans',sans-serif;
+  font-size:10px;font-weight:600;
+  padding:8px 14px;
+  letter-spacing:1.5px;text-transform:uppercase;
+}
+.model-body { padding:20px 24px 24px; }
+.model-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:500;
+  color:var(--navy);margin-bottom:8px;
+}
+.model-specs {
+  display:flex;gap:20px;
+  font-size:12px;color:var(--ink-lt);
+  margin-bottom:14px;
+}
+.model-price {
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:400;
+  color:var(--navy);
+  letter-spacing:-.5px;
+}
+.model-price span {
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:400;
+  color:var(--ink-lt);margin-left:4px;
+}
+.show-more-center { text-align:center;margin-top:52px; }
+.gvg-link {
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:36px;
+  font-size:11px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink-lt);text-decoration:none;
+  font-family:'DM Sans',sans-serif;
+  transition:color .3s;
+  border-bottom:1px solid var(--line);
+  padding-bottom:3px;
+}
+.gvg-link:hover { color:var(--navy);border-color:var(--gold); }
+.gvg-link svg { transition:transform .3s; }
+.gvg-link:hover svg { transform:translateX(4px); }
+
+/* ── CTA BAND ── */
+.cta-section {
+  background:var(--navy);
+  padding:140px 0;
+  position:relative;overflow:hidden;
+}
+.cta-section::before {
+  content:'MgO';
+  position:absolute;right:-40px;top:50%;
+  transform:translateY(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:400px;font-weight:300;
+  color:rgba(250,248,245,.02);
+  line-height:1;white-space:nowrap;
+  pointer-events:none;letter-spacing:-10px;
+}
+.cta-inner {
+  max-width:900px;margin:0 auto;
+  padding:0 48px;text-align:center;
+  position:relative;z-index:1;
+}
+.cta-inner .sec-eyebrow { display:block;margin-bottom:20px; }
+.cta-inner h2 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(56px,8vw,110px);
+  font-weight:300;line-height:.95;
+  color:var(--cream);margin-bottom:28px;
+  letter-spacing:-3px;
+}
+.cta-inner h2 em { font-style:italic;color:var(--gold-lt); }
+.cta-inner p {
+  font-size:15px;font-weight:300;
+  color:rgba(250,248,245,.5);
+  line-height:1.8;margin-bottom:52px;
+  max-width:560px;margin-left:auto;margin-right:auto;
+}
+.cta-btns { display:flex;gap:16px;justify-content:center;flex-wrap:wrap; }
+
+/* ── CONTACT ── */
+.contact-section { background:var(--cream); }
+.instant-banner {
+  background:var(--navy);
+  padding:40px 52px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:64px;
+  gap:24px;
+}
+.ib-text h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;font-weight:500;
+  color:var(--cream);margin-bottom:6px;
+}
+.ib-text p { font-size:13px;color:rgba(250,248,245,.5); }
+.divider-line {
+  text-align:center;
+  font-size:11px;font-weight:500;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--ink-lt);
+  margin-bottom:56px;
+  font-family:'DM Sans',sans-serif;
+  position:relative;
+}
+.divider-line::before,.divider-line::after {
+  content:'';position:absolute;
+  top:50%;width:calc(50% - 140px);
+  height:1px;background:var(--line);
+}
+.divider-line::before { left:0; }
+.divider-line::after { right:0; }
+.contact-grid {
+  display:grid;grid-template-columns:1fr 1.3fr;
+  gap:80px;align-items:start;
+}
+.contact-info h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;font-weight:400;
+  color:var(--navy);margin-bottom:36px;
+}
+.c-item { display:flex;gap:18px;margin-bottom:28px;align-items:flex-start; }
+.c-ico {
+  width:44px;height:44px;
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.c-text strong { display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:3px; }
+.c-text span { font-size:13px;color:var(--ink-lt); }
+.c-text a { color:var(--gold);text-decoration:none; }
+.form-card {
+  background:var(--white);
+  border:1px solid var(--line);
+  padding:48px;
+}
+.form-card h3 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:26px;font-weight:400;
+  color:var(--navy);margin-bottom:32px;
+}
+.form-row { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+.form-group { margin-bottom:18px; }
+.form-group label {
+  display:block;font-size:10px;font-weight:600;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--ink-lt);margin-bottom:8px;
+  font-family:'DM Sans',sans-serif;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%;padding:14px 18px;
+  background:var(--cream);
+  border:1px solid var(--line);
+  font-size:14px;font-family:'DM Sans',sans-serif;
+  color:var(--ink);
+  transition:border-color .3s,background .3s;
+  outline:none;appearance:none;
+  border-radius:0;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color:var(--gold);
+  background:var(--white);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color:var(--ink-lt); }
+.form-group select option { background:var(--white);color:var(--ink); }
+.form-group textarea { resize:vertical;min-height:100px; }
+.btn-submit {
+  width:100%;padding:16px;
+  background:var(--navy);color:var(--cream);
+  border:none;
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  cursor:pointer;
+  transition:all .3s;
+  margin-top:8px;
+}
+.btn-submit:hover { background:var(--gold); }
+.form-ok,.form-err {
+  display:none;padding:14px 18px;
+  margin-top:14px;font-size:13px;font-weight:500;
+}
+.form-ok { background:rgba(21,128,61,.08);color:#15803D;border-left:3px solid #15803D; }
+.form-err { background:rgba(220,38,38,.06);color:#DC2626;border-left:3px solid #DC2626; }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--navy);
+  color:rgba(250,248,245,.5);
+  padding:80px 0 36px;
+}
+.footer-inner { max-width:1280px;margin:0 auto;padding:0 48px; }
+.footer-top {
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:60px;
+  padding-bottom:48px;
+  border-bottom:1px solid rgba(250,248,245,.06);
+  margin-bottom:32px;
+}
+.footer-brand p {
+  font-size:13px;font-weight:300;
+  color:rgba(250,248,245,.4);
+  line-height:1.75;margin-top:20px;
+  max-width:280px;
+}
+.footer-col h4 {
+  font-size:9px;font-weight:700;
+  letter-spacing:3.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+  font-family:'DM Sans',sans-serif;
+}
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:10px; }
+.footer-col ul li a {
+  color:rgba(250,248,245,.4);font-size:13px;
+  text-decoration:none;transition:color .3s;font-weight:300;
+}
+.footer-col ul li a:hover { color:var(--cream); }
+.footer-bottom {
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;
+  font-size:11px;color:rgba(250,248,245,.2);
+}
+.footer-domain {
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;font-weight:400;font-style:italic;
+  color:var(--gold);opacity:.7;
+}
+
+/* ── SCROLL TOP ── */
+#scrollTop {
+  position:fixed;bottom:36px;right:36px;
+  width:48px;height:48px;
+  background:var(--navy);color:var(--cream);
+  border:1px solid rgba(250,248,245,.1);
+  font-size:18px;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  z-index:999;transition:all .3s;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+}
+#scrollTop:hover { background:var(--gold);border-color:var(--gold); }
+
+/* ── REVEAL ── */
+.reveal { opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1;transform:none; }
+
+/* ── WAVE DIVIDERS ── */
+.wave-down { margin-bottom:-2px;line-height:0; }
+.wave-up { margin-top:-2px;line-height:0; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .feat-grid { grid-template-columns:repeat(4,1fr); }
+  .stats-row { grid-template-columns:repeat(3,1fr); }
+  .process-line { grid-template-columns:repeat(3,1fr); }
+  .process-line::before { display:none; }
+  .footer-top { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:900px){
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-panel { display:none; }
+  .mgo-grid { grid-template-columns:1fr; gap:60px; }
+  .feat-grid { grid-template-columns:repeat(2,1fr); }
+  .models-grid { grid-template-columns:repeat(2,1fr); }
+  .contact-grid { grid-template-columns:1fr; }
+  .instant-banner { flex-direction:column;gap:20px; }
+}
+@media(max-width:768px){
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .sec-inner, .nav-inner { padding:0 24px; }
+  .hero-inner { padding:120px 24px 100px; }
+  .sec-pad { padding:80px 0; }
+  .stats-row { grid-template-columns:repeat(2,1fr); }
+  .feat-grid { grid-template-columns:1fr 1fr; }
+  .models-grid { grid-template-columns:1fr; }
+  .process-line { grid-template-columns:1fr;gap:32px; }
+  .footer-top { grid-template-columns:1fr;gap:36px; }
+  .footer-inner { padding:0 24px; }
+  .form-row { grid-template-columns:1fr; }
+  .form-card { padding:32px 24px; }
+  .cta-inner { padding:0 24px; }
+  .instant-banner { padding:28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <rect x="1" y="1" width="42" height="42" stroke="#1A2744" stroke-width="1"/>
+          <polygon points="22,8 38,20 38,38 6,38 6,20" fill="#1A2744"/>
+          <polygon points="22,12 34,21 34,34 10,34 10,21" fill="#B8832A" opacity=".8"/>
+          <polygon points="22,16 30,22 30,30 14,30 14,22" fill="#FAF8F5"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <div class="logo-name">SIP Panel Debrecen</div>
+        <div class="logo-sub">GV Group · MgO SIP</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#technologia">Technológia</a></li>
+      <li><a href="#elonyok">Előnyök</a></li>
+      <li><a href="#modellek">Modellek</a></li>
+      <li><a href="#folyamat">Folyamat</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+      <li><a href="https://lead.gvgroup.hu/" class="nav-cta">Ajánlat →</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">✕</span>
+  <a href="#technologia" onclick="closeMobileMenu()">Technológia</a>
+  <a href="#elonyok" onclick="closeMobileMenu()">Előnyök</a>
+  <a href="#modellek" onclick="closeMobileMenu()">Modellek</a>
+  <a href="#folyamat" onclick="closeMobileMenu()">Folyamat</a>
+  <a href="#kapcsolat" onclick="closeMobileMenu()">Kapcsolat</a>
+  <a href="https://lead.gvgroup.hu/" style="color:var(--gold-lt)">Ajánlat Kérése →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">GV Group · Debrecen · MgO SIP panel</div>
+      <h1>
+        <em>Következő</em>
+        <strong>generáció</strong>
+        MgO SIP
+      </h1>
+      <p class="hero-desc">
+        Az egyetlen <b>A1 tűzminősítésű</b> könnyűszerkezetes házrendszer Debrecenben.
+        Passzívháztól A++ energiaosztályig – <b>50 év rendszergaranciával.</b>
+      </p>
+      <div class="hero-btns">
+        <a href="https://lead.gvgroup.hu/" class="btn-primary">
+          Ajánlatot kérek
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#modellek" class="btn-ghost">Modelleket nézek</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hp-item">
+        <div class="hp-num">A1</div>
+        <div class="hp-label">Tűzminősítés</div>
+      </div>
+      <div class="hp-item">
+        <div class="hp-num">50</div>
+        <div class="hp-label">Év garancia</div>
+      </div>
+      <div class="hp-item">
+        <div class="hp-num">15×</div>
+        <div class="hp-label">Légtömörség</div>
+      </div>
+      <div class="hp-item">
+        <div class="hp-num">A++</div>
+        <div class="hp-label">Energiaosztály</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Görgessen</div>
+  <div class="hero-curve">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
+      <path d="M0 60 C360 0 1080 0 1440 60 L1440 60 L0 60Z" fill="#1A2744"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-sep">◆</span> A1 Tűzállóság <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">50 Év Garancia <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Passzívház alkalmas <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Antiallergén <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Vízálló · Rothadásálló <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">ÉMI · ISO · CE Tanúsítvány <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">CSOK-kompatibilis <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">OTP Bank Partner <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">4–6 hónap kivitelezés <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Debrecen · GV Group <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item"><span class="marquee-sep">◆</span> A1 Tűzállóság <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">50 Év Garancia <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Passzívház alkalmas <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Antiallergén <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Vízálló · Rothadásálló <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">ÉMI · ISO · CE Tanúsítvány <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">CSOK-kompatibilis <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">OTP Bank Partner <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">4–6 hónap kivitelezés <span class="marquee-sep">◆</span></span>
+    <span class="marquee-item">Debrecen · GV Group <span class="marquee-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="sec-inner">
+    <div class="stats-row reveal">
+      <div class="stat-cell">
+        <div class="stat-num">A1</div>
+        <div class="stat-label">Tűzminősítés</div>
+        <div class="stat-note">EU-s legjobb tűzállósági osztály</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span data-target="50">0</span></div>
+        <div class="stat-label">Év garancia</div>
+        <div class="stat-note">Rendszergaranciával szállítva</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span data-target="15">0</span>×</div>
+        <div class="stat-label">Légtömörség</div>
+        <div class="stat-note">Szabványértéknél 15× jobb légzárás</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span data-target="50">0</span></div>
+        <div class="stat-label">kWh/m²/év</div>
+        <div class="stat-note">Passzívház szintű energiaigény</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span data-target="4">0</span>–6</div>
+        <div class="stat-label">Hónap átadás</div>
+        <div class="stat-note">Alapozástól kulcsra kész</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MGO TECHNOLÓGIA -->
+<section class="mgo-section sec-pad" id="technologia">
+  <div class="sec-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">MgO SIP Technológia</span>
+      <h2 class="sec-title">Mi teszi különlegessé<br><em>az MgO SIP-et?</em></h2>
+      <p class="sec-sub">A magnézium-oxid panel nem csupán evolúció – hanem <strong>generációváltás</strong> az építőanyagok terén. A hagyományos OSB-alapú SIP panelekkel szemben az MgO lap tűzálló, vízálló és antiallergén.</p>
+    </div>
+    <div class="mgo-grid">
+      <div class="reveal">
+        <p class="mgo-panel-label">A panel felépítése</p>
+        <p class="mgo-panel-note">3 réteg – tökéletes hő-, hang- és tűzvédelem egyszerre</p>
+        <div>
+          <div class="layer-item">
+            <div class="layer-num">1</div>
+            <div class="layer-text">
+              <strong>Külső MgO / magnézium-oxid lap</strong>
+              <span>A1 tűzálló, vízálló, sóálló – extrém időjárásnak ellenáll</span>
+              <span class="layer-tag">A1 osztály</span>
+            </div>
+          </div>
+          <div class="layer-item">
+            <div class="layer-num">2</div>
+            <div class="layer-text">
+              <strong>14 cm grafitos EPS mag</strong>
+              <span>Grafit-adalékos expandált polisztirol – kiemelkedő hőszigeteléssel</span>
+              <span class="layer-tag">Passzívház</span>
+            </div>
+          </div>
+          <div class="layer-item">
+            <div class="layer-num">3</div>
+            <div class="layer-text">
+              <strong>Belső MgO / magnézium-oxid lap</strong>
+              <span>Precíz, egyenes belső felület – tűzálló belső tér</span>
+              <span class="layer-tag">Antiallergén</span>
+            </div>
+          </div>
+        </div>
+        <div class="mgo-note-box">
+          <strong style="color:var(--navy);font-weight:600;">GV Group</strong> – Debrecen, Tarján u. 37. |
+          Az MgO SIP panelek CNC vezérelt gyártása, helyi kivitelező csapattal.
+          <a href="https://gvgroup.hu" target="_blank"> → gvgroup.hu</a>
+        </div>
+      </div>
+      <div class="mgo-facts reveal">
+        <div class="fact-item">
+          <div class="fact-ico">🔥</div>
+          <div class="fact-text">
+            <strong>A1 tűzminősítés – az EPS SIP-pel szemben</strong>
+            <p>A hagyományos EPS SIP panelek E kategóriásak. Az MgO lap A1 – ugyanolyan, mint a beton vagy a tégla. Lakásbiztosítóknál és bankoknál is előny.</p>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-ico">💧</div>
+          <div class="fact-text">
+            <strong>Vízálló · sóálló · rothadásálló</strong>
+            <p>Édes- és sósvízbe merítve sem korrodál, nem rothat, nem duzzad. Szemben az OSB lappal, amelyet nedvesség tartósan károsít.</p>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-ico">🌱</div>
+          <div class="fact-text">
+            <strong>Antiallergén · nem mérgező · kloridmentes</strong>
+            <p>Nem tartalmaz formaldehidet, kloridot vagy egyéb allergén anyagot. Egészséges lakóteret biztosít gyermekek és allergiások számára is.</p>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-ico">⚡</div>
+          <div class="fact-text">
+            <strong>Szél-, földrengés- és ütésálló szerkezet</strong>
+            <p>A SIP keret és az MgO lap együtt rendkívüli szerkezeti merevséget ad. Hajlítható, de töréssel szemben kiemelkedően ellenálló.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 ELŐNY -->
+<section class="features-section sec-pad" id="elonyok">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:64px;">
+      <span class="sec-eyebrow sec-eyebrow-lt">MgO SIP – 10 tulajdonság</span>
+      <h2 class="sec-title sec-title-lt">Miért az MgO SIP<br><em>az okos választás?</em></h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-num">01</div>
+        <span class="feat-icon">🔥</span>
+        <h4>Tűzálló A1</h4>
+        <p>EU A1 tűzbesorolás – lángálló és tűzálló. Ugyanaz a kategória, mint a beton.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">02</div>
+        <span class="feat-icon">💧</span>
+        <h4>Vízálló</h4>
+        <p>Édes- és sósvíznek egyaránt ellenáll. Nem duzzad, nem rothadaz, nem penészedik.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">03</div>
+        <span class="feat-icon">🌿</span>
+        <h4>Antiallergén</h4>
+        <p>Nem mérgező, kloridmentes, formaldehidmentes. Egészséges belső levegőminőség.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">04</div>
+        <span class="feat-icon">🏠</span>
+        <h4>Hőszigetelés</h4>
+        <p>Anyagában hőszigetelt – passzívházig bezárólag elérhető. 50 kWh/m²/év.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">05</div>
+        <span class="feat-icon">🔇</span>
+        <h4>Hangszigetelés</h4>
+        <p>Rendkívül jó akusztikai tulajdonságok – a téglaháznál lényegesen jobb.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">06</div>
+        <span class="feat-icon">🐜</span>
+        <h4>Biológiai ellenállás</h4>
+        <p>Gombának, rovarnak, rágcsálónak ellenáll – élettartama akár 100+ év.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">07</div>
+        <span class="feat-icon">🌪️</span>
+        <h4>Szél- és földrengésálló</h4>
+        <p>Extrém szélerőnek és szeizmikus terhelésnek ellenáll – hajlítható, de stabil.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">08</div>
+        <span class="feat-icon">⚖️</span>
+        <h4>Könnyű szerkezet</h4>
+        <p>A téglahoz képest töredék tömeg – gyorsabb alapozás, kisebb talajterhelés.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">09</div>
+        <span class="feat-icon">🌍</span>
+        <h4>Alacsony CO₂</h4>
+        <p>Kis szénlábnyom, alacsony vízfelhasználás – fenntartható építészet.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-num">10</div>
+        <span class="feat-icon">🌡️</span>
+        <h4>Extrém klíma</h4>
+        <p>–40°C-tól +80°C-ig stabil. Magyar télnek és nyári hőhullámnak egyaránt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÖSSZEHASONLÍTÁS -->
+<section class="comp-section sec-pad">
+  <div class="sec-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">Összehasonlítás</span>
+      <h2 class="sec-title">MgO SIP vs.<br><em>hagyományos megoldások</em></h2>
+      <p class="sec-sub">Lássa számokban és tényekben, miért jelent az MgO SIP valódi előrelépést a téglaházzal és a hagyományos EPS SIP-pel szemben.</p>
+    </div>
+    <div class="comp-wrap reveal">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Jellemző</th>
+            <th class="col-brick">🏚️ Tégla / Blokk</th>
+            <th class="col-eps">🏠 EPS SIP</th>
+            <th class="col-mgo">🏆 MgO SIP<br><span class="col-mgo-tag">AJÁNLOTT</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Tűzállóság</td><td class="col-brick-c"><span class="chk-y">A1</span> Igen</td><td class="col-eps-c"><span class="chk-p">E</span> Közepes</td><td class="col-mgo-c"><span class="chk-y">A1</span> Legjobb</td></tr>
+          <tr><td>Vízállóság</td><td class="col-brick-c">★★★☆☆</td><td class="col-eps-c">★★☆☆☆</td><td class="col-mgo-c">★★★★★</td></tr>
+          <tr><td>Hőszigetelés</td><td class="col-brick-c">★★☆☆☆</td><td class="col-eps-c">★★★★☆</td><td class="col-mgo-c">★★★★★</td></tr>
+          <tr><td>Hangszigetelés</td><td class="col-brick-c">★★★☆☆</td><td class="col-eps-c">★★★★☆</td><td class="col-mgo-c">★★★★★</td></tr>
+          <tr><td>Antiallergén</td><td class="col-brick-c"><span class="chk-p">Részben</span></td><td class="col-eps-c"><span class="chk-n">Nem</span></td><td class="col-mgo-c"><span class="chk-y">Igen</span></td></tr>
+          <tr><td>Rothadásálló</td><td class="col-brick-c"><span class="chk-y">Igen</span></td><td class="col-eps-c"><span class="chk-n">Nem</span></td><td class="col-mgo-c"><span class="chk-y">Igen</span></td></tr>
+          <tr><td>Energiaosztály</td><td class="col-brick-c">B–C</td><td class="col-eps-c">A+</td><td class="col-mgo-c"><strong>A++</strong></td></tr>
+          <tr><td>Rendszergarancia</td><td class="col-brick-c">–</td><td class="col-eps-c">–</td><td class="col-mgo-c"><strong>50 év</strong></td></tr>
+          <tr><td>Kivitelezési idő</td><td class="col-brick-c">12–24 hónap</td><td class="col-eps-c">4–6 hónap</td><td class="col-mgo-c"><strong>4–6 hónap</strong></td></tr>
+          <tr><td>CSOK jóváhagyás</td><td class="col-brick-c"><span class="chk-y">Igen</span></td><td class="col-eps-c"><span class="chk-y">Igen</span></td><td class="col-mgo-c"><span class="chk-y">Igen</span></td></tr>
+          <tr><td>ÉMI / CE tanúsítvány</td><td class="col-brick-c"><span class="chk-y">Igen</span></td><td class="col-eps-c"><span class="chk-p">Részben</span></td><td class="col-mgo-c"><span class="chk-y">Igen – teljes</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOLYAMAT -->
+<section class="process-section sec-pad" id="folyamat">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:80px;">
+      <span class="sec-eyebrow">Hogyan épül fel?</span>
+      <h2 class="sec-title">5 lépés, <em>kulcsra kész otthon</em></h2>
+    </div>
+    <div class="process-line">
+      <div class="proc-step reveal">
+        <div class="proc-num">1</div>
+        <h4>Konzultáció</h4>
+        <p>Személyes tanácsadás, alaprajz véglegesítése, engedélyek</p>
+        <span class="proc-time">1–2 hét</span>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-num">2</div>
+        <h4>Alap &amp; előkészítés</h4>
+        <p>Telek előkészítés, alapozás és infrastruktúra</p>
+        <span class="proc-time">2–3 hét</span>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-num">3</div>
+        <h4>MgO panel gyártás</h4>
+        <p>CNC vezérelt gyártás saját üzemben – minőségellenőrzéssel</p>
+        <span class="proc-time">2–4 hét</span>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-num">4</div>
+        <h4>Szerkezet felállítása</h4>
+        <p>Panelek helyszíni összeszerelésse és tető kialakítása</p>
+        <span class="proc-time">~1 hét</span>
+      </div>
+      <div class="proc-step reveal">
+        <div class="proc-num">5</div>
+        <h4>Befejezés &amp; átadás</h4>
+        <p>Gépészet, elektromos, burkolás, kulcsátadás</p>
+        <span class="proc-time">6–8 hét</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TANÚSÍTVÁNYOK -->
+<section class="certs-section sec-pad">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <span class="sec-eyebrow">Tanúsítványok &amp; Minősítések</span>
+      <h2 class="sec-title">Igazolt minőség,<br><em>minden szinten</em></h2>
+    </div>
+    <div class="certs-grid reveal">
+      <div class="cert-item"><span class="cert-ico">🔥</span><div class="cert-label"><strong>A1 Tűzminősítés</strong><span>EU tűzállósági osztály</span></div></div>
+      <div class="cert-item"><span class="cert-ico">📋</span><div class="cert-label"><strong>ÉMI / NMÉ</strong><span>Magyar épületszerkezeti tanúsítvány</span></div></div>
+      <div class="cert-item"><span class="cert-ico">🇪🇺</span><div class="cert-label"><strong>CE jelölés</strong><span>Európai uniós megfelelőség</span></div></div>
+      <div class="cert-item"><span class="cert-ico">🌿</span><div class="cert-label"><strong>ISO rendszer</strong><span>Minőségirányítási szabvány</span></div></div>
+      <div class="cert-item"><span class="cert-ico">🌲</span><div class="cert-label"><strong>FSC minősítés</strong><span>Felelős erdőgazdálkodás</span></div></div>
+      <div class="cert-item"><span class="cert-ico">🏦</span><div class="cert-label"><strong>OTP Bank Partner</strong><span>Kedvező lakáshitel feltételek</span></div></div>
+      <div class="cert-item"><span class="cert-ico">⭐</span><div class="cert-label"><strong>OPTEN A+</strong><span>Cégminősítés – pénzügyileg stabil</span></div></div>
+      <div class="cert-item"><span class="cert-ico">🏅</span><div class="cert-label"><strong>EOTA / ETA</strong><span>Európai műszaki engedély</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELLEK -->
+<section class="models-section sec-pad" id="modellek">
+  <div class="sec-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">Mintaháztípusok</span>
+      <h2 class="sec-title">Válasszon <em>alaprajzot</em></h2>
+      <p class="sec-sub">Minden modell MgO SIP panelből épül. 62 m²-től 158 m²-ig, egyszintestől emeletes variációkig.</p>
+    </div>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">Összes</button>
+      <button class="filter-btn" data-filter="small">60–90 m²</button>
+      <button class="filter-btn" data-filter="medium">91–130 m²</button>
+      <button class="filter-btn" data-filter="large">130+ m²</button>
+      <button class="filter-btn" data-filter="duplex">Emeletes</button>
+    </div>
+    <div class="models-grid" id="modelsGrid">
+
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-colombia-tipushaz21-01-1.jpg" alt="GV-Columbia" loading="lazy"><span class="model-badge">62 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Columbia</div><div class="model-specs"><span>📐 62 m²</span><span>🛏 1+1 szoba</span></div><div class="model-price">31 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-jolly1-tipushaz21-01.jpg" alt="GV-Jolly1" loading="lazy"><span class="model-badge">~78 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Jolly1</div><div class="model-specs"><span>📐 ~78 m²</span><span>🛏 2 szoba</span></div><div class="model-price">35,4 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-milano-uj-tipushaz-2022-1.jpg" alt="GV-Milano" loading="lazy"><span class="model-badge">80 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Milano</div><div class="model-specs"><span>📐 80 m²</span><span>🛏 3 szoba</span></div><div class="model-price">41,9 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-sydney-tipushaz-1.jpg" alt="GV-Sydney" loading="lazy"><span class="model-badge">83 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Sydney</div><div class="model-specs"><span>📐 83 m²</span><span>🛏 3 szoba</span></div><div class="model-price">43,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-jolly2-tipushaz21-jolly2-01.jpg" alt="GV-Jolly2" loading="lazy"><span class="model-badge">~88 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Jolly2</div><div class="model-specs"><span>📐 ~88 m²</span><span>🛏 3 szoba</span></div><div class="model-price">45,1 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card" data-size="small">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-argentina-tipushaz21-01.jpg" alt="GV-Argentína" loading="lazy"><span class="model-badge">90 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Argentína</div><div class="model-specs"><span>📐 90 m²</span><span>🛏 2 szoba</span></div><div class="model-price">41,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-tokio-tipushaz21-01.jpg" alt="GV-Tokió" loading="lazy"><span class="model-badge">92 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Tokió</div><div class="model-specs"><span>📐 92 m²</span><span>🛏 2 szoba</span></div><div class="model-price">46,1 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/T4-9-1.jpg" alt="GV-Málta" loading="lazy"><span class="model-badge">95 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Málta</div><div class="model-specs"><span>📐 95 m²</span><span>🛏 2 szoba</span></div><div class="model-price">52 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-peru-tipushaz21-01.jpg" alt="GV-Peru" loading="lazy"><span class="model-badge">97 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Peru</div><div class="model-specs"><span>📐 97 m²</span><span>🛏 3 szoba</span></div><div class="model-price">48,5 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-chile-tipushaz21-01.jpg" alt="GV-Chile" loading="lazy"><span class="model-badge">98 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Chile</div><div class="model-specs"><span>📐 98 m²</span><span>🛏 2-3 szoba</span></div><div class="model-price">50,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/T6-1.jpg" alt="GV-Katar" loading="lazy"><span class="model-badge">101 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Katar</div><div class="model-specs"><span>📐 101 m²</span><span>🛏 3 szoba</span></div><div class="model-price">52,2 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-london-3.jpg" alt="GV-London" loading="lazy"><span class="model-badge">102 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-London</div><div class="model-specs"><span>📐 102 m²</span><span>🛏 2 szoba</span></div><div class="model-price">52,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-jemen-tipushaz21-01.jpg" alt="GV-Jemen" loading="lazy"><span class="model-badge">108 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Jemen</div><div class="model-specs"><span>📐 108 m²</span><span>🛏 4 szoba</span></div><div class="model-price">52,4 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-newyork-2.jpg" alt="GV-San Francisco" loading="lazy"><span class="model-badge">109 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-San Francisco</div><div class="model-specs"><span>📐 109 m²</span><span>🛏 3 szoba</span></div><div class="model-price">57,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-kairo-tipushaz2022-2.jpg" alt="GV-Kairó" loading="lazy"><span class="model-badge">110 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Kairó</div><div class="model-specs"><span>📐 110 m²</span><span>🛏 3 szoba</span></div><div class="model-price">56,4 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-marseille-1.jpg" alt="GV-Marseille" loading="lazy"><span class="model-badge">110 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Marseille</div><div class="model-specs"><span>📐 110 m²</span><span>🛏 3 szoba</span></div><div class="model-price">56,5 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-mexiko-tipushaz21-01.jpg" alt="GV-Mexico" loading="lazy"><span class="model-badge">CSOK</span></div>
+        <div class="model-body"><div class="model-name">GV-Mexico</div><div class="model-specs"><span>📐 CSOK modell</span><span>🛏 4 szoba</span></div><div class="model-price">54,2 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/T7-9-2.jpg" alt="GV-Malmö" loading="lazy"><span class="model-badge">116 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Malmö</div><div class="model-specs"><span>📐 116 m²</span><span>🛏 2+dolgozó</span></div><div class="model-price">60,6 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-nepal-tipushaz21-01.jpg" alt="GV-Nepál" loading="lazy"><span class="model-badge">121 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Nepál</div><div class="model-specs"><span>📐 121 m²</span><span>🛏 3 szoba</span></div><div class="model-price">61,3 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-toronto-tipushaz2022-1.jpg" alt="GV-Toronto" loading="lazy"><span class="model-badge">122 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Toronto</div><div class="model-specs"><span>📐 122 m²</span><span>🛏 3 szoba</span></div><div class="model-price">64,2 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-brazilia-tipushaz21-01.jpg" alt="GV-Brazília" loading="lazy"><span class="model-badge">125 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Brazília</div><div class="model-specs"><span>📐 125 m²</span><span>🛏 3 szoba</span></div><div class="model-price">64,2 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="medium">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-delhi-tipushaz21-02.jpg" alt="GV-Delhi" loading="lazy"><span class="model-badge">CSOK</span></div>
+        <div class="model-body"><div class="model-name">GV-Delhi</div><div class="model-specs"><span>📐 CSOK modell</span><span>🛏 3 szoba</span></div><div class="model-price">63,3 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+
+      <div class="model-card hidden-card" data-size="large">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-cuba-tipushaz21-01.jpg" alt="GV-Cuba" loading="lazy"><span class="model-badge">131 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Cuba</div><div class="model-specs"><span>📐 131 m²</span><span>🛏 3 szoba</span></div><div class="model-price">63,4 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="large">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-honolulu-tipushaz21-01.jpg" alt="GV-Honolulu" loading="lazy"><span class="model-badge">134 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Honolulu</div><div class="model-specs"><span>📐 134 m²</span><span>🛏 3 szoba</span></div><div class="model-price">71,8 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="large">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/koltozzma-china-tipushaz21-01-1.jpg" alt="GV-China" loading="lazy"><span class="model-badge">150 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-China</div><div class="model-specs"><span>📐 150 m²</span><span>🛏 3+dolgozó</span></div><div class="model-price">95,5 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="large">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/T5-1-2.jpg" alt="GV-Bali" loading="lazy"><span class="model-badge">158 m²</span></div>
+        <div class="model-body"><div class="model-name">GV-Bali</div><div class="model-specs"><span>📐 158 m²</span><span>🛏 2-3 szoba</span></div><div class="model-price">71,1 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+
+      <div class="model-card hidden-card" data-size="duplex">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-tipushaz-EM1-2.jpg" alt="GV-Bombay" loading="lazy"><span class="model-badge">Emeletes</span></div>
+        <div class="model-body"><div class="model-name">GV-Bombay</div><div class="model-specs"><span>📐 48+35 m²</span><span>🛏 3 szoba</span></div><div class="model-price">79,7 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="duplex">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-tipushaz-EM3-7.jpg" alt="GV-Kalkutta" loading="lazy"><span class="model-badge">Emeletes</span></div>
+        <div class="model-body"><div class="model-name">GV-Kalkutta</div><div class="model-specs"><span>📐 50+48 m²</span><span>🛏 3+dolgozó</span></div><div class="model-price">64,9 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="duplex">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/EM4-1.jpg" alt="GV-New York" loading="lazy"><span class="model-badge">Emeletes</span></div>
+        <div class="model-body"><div class="model-name">GV-New York</div><div class="model-specs"><span>📐 57+61 m²</span><span>🛏 3 szoba</span></div><div class="model-price">80,9 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+      <div class="model-card hidden-card" data-size="duplex">
+        <div class="model-img"><img src="https://gvgroup.hu/wp-content/uploads/2023/06/sipeuropa-tipushaz-EM2-1.jpg" alt="GV-Jakarta" loading="lazy"><span class="model-badge">Emeletes</span></div>
+        <div class="model-body"><div class="model-name">GV-Jakarta</div><div class="model-specs"><span>📐 79+64 m²</span><span>🛏 4+1 szoba</span></div><div class="model-price">88,8 M Ft <span>bruttó ártól</span></div></div>
+      </div>
+
+    </div>
+
+    <div class="show-more-center">
+      <button class="btn-primary" id="showMoreBtn" onclick="toggleModels()">
+        Mutass többet
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://gvgroup.hu" target="_blank" class="gvg-link">
+        Teljes modellkatalógus a GV Group oldalán
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <span class="sec-eyebrow sec-eyebrow-lt">Debrecen és vonzáskörzete</span>
+    <h2>Készen áll<br><em>az otthonára?</em></h2>
+    <p>Kérjen személyre szabott ajánlatot. Debrecenben és vonzáskörzetében saját kivitelező csapatunkkal dolgozunk – gyorsan, átláthatóan, fix áron.</p>
+    <div class="cta-btns">
+      <a href="https://lead.gvgroup.hu/" class="btn-primary">
+        Azonnali ajánlat kérése
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#kapcsolat" class="btn-ghost">Írjon nekünk</a>
+    </div>
+  </div>
+</section>
+
+<!-- KAPCSOLAT -->
+<section class="contact-section sec-pad" id="kapcsolat">
+  <div class="sec-inner">
+    <div class="reveal">
+      <span class="sec-eyebrow">Kapcsolat</span>
+      <h2 class="sec-title">Lépjen velünk<br><em>kapcsolatba</em></h2>
+    </div>
+
+    <div class="instant-banner reveal">
+      <div class="ib-text">
+        <h3>Azonnali ajánlatot szeretne?</h3>
+        <p>Töltse ki rövid kérdőívünket – perceken belül felvesszük a kapcsolatot.</p>
+      </div>
+      <a href="https://lead.gvgroup.hu/" class="btn-primary" style="flex-shrink:0;font-size:11px;">
+        Ajánlatkérés most →
+      </a>
+    </div>
+
+    <div class="divider-line">vagy töltse ki az alábbi űrlapot</div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <h3>Elérhetőségeink</h3>
+        <div class="c-item">
+          <div class="c-ico">📞</div>
+          <div class="c-text">
+            <strong>+36 30 269 9018</strong>
+            <span>H–P 8:00–16:00 · Szo 8:00–12:00</span>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico">📍</div>
+          <div class="c-text">
+            <strong>4032 Debrecen, Tarján u. 37.</strong>
+            <span>GV Group Befektető Kft.</span>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico">🌐</div>
+          <div class="c-text">
+            <strong><a href="https://gvgroup.hu" target="_blank">gvgroup.hu</a></strong>
+            <span>Teljes modellkatalógus és részletes info</span>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-ico">🕐</div>
+          <div class="c-text">
+            <strong>Nyitvatartás</strong>
+            <span>Hétfő–Péntek: 8:00–16:00<br>Szombat: 8:00–12:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>Ajánlatkérő űrlap</h3>
+        <form id="contactForm" novalidate>
+          <input type="hidden" name="_subject" value="Új ajánlatkérés – SIP Panel Debrecen">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" style="display:none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teljes név *</label>
+              <input type="text" name="nev" placeholder="Kovács János" required>
+            </div>
+            <div class="form-group">
+              <label>Telefonszám *</label>
+              <input type="tel" name="telefon" placeholder="+36 30 000 0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mail cím</label>
+            <input type="email" name="email" placeholder="pelda@email.hu">
+          </div>
+          <div class="form-group">
+            <label>Érdeklődési téma</label>
+            <select name="tema">
+              <option value="">Válasszon témát...</option>
+              <option>MgO SIP árajánlat</option>
+              <option>Mintaháztípusok</option>
+              <option>Finanszírozás / CSOK / OTP</option>
+              <option>Passzívház lehetőség</option>
+              <option>Telekre vonatkozó kérdés</option>
+              <option>Egyéb</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Üzenet</label>
+            <textarea name="uzenet" placeholder="Írja le kérdését vagy igényét..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">Üzenet elküldése →</button>
+          <div class="form-ok" id="formOk">✓ Köszönjük! Hamarosan felvesszük Önnel a kapcsolatot.</div>
+          <div class="form-err" id="formErr">✕ Hiba történt. Kérjük, hívjon minket telefonon.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+              <rect x="1" y="1" width="42" height="42" stroke="#B8832A" stroke-width="1" opacity=".3"/>
+              <polygon points="22,8 38,20 38,38 6,38 6,20" fill="#B8832A" opacity=".2"/>
+              <polygon points="22,12 34,21 34,34 10,34 10,21" fill="#B8832A" opacity=".4"/>
+              <polygon points="22,16 30,22 30,30 14,30 14,22" fill="#FAF8F5" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <div class="logo-name" style="color:var(--cream);">SIP Panel Debrecen</div>
+            <div class="logo-sub">GV Group · MgO SIP</div>
+          </div>
+        </div>
+        <p>MgO Grafitos SIP panel házak Debrecenben és vonzáskörzetében. A1 tűzminősítés, 50 év garancia, passzívházig.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigáció</h4>
+        <ul>
+          <li><a href="#technologia">Technológia</a></li>
+          <li><a href="#elonyok">10 Előny</a></li>
+          <li><a href="#modellek">Modellek</a></li>
+          <li><a href="#folyamat">Folyamat</a></li>
+          <li><a href="#kapcsolat">Kapcsolat</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>GV Group</h4>
+        <ul>
+          <li><a href="https://gvgroup.hu" target="_blank">gvgroup.hu</a></li>
+          <li><a href="https://lead.gvgroup.hu/" target="_blank">Ajánlatkérés</a></li>
+          <li><a href="https://siphazcentrum.hu" target="_blank">siphazcentrum.hu</a></li>
+          <li><a href="https://siphazak.hu" target="_blank">siphazak.hu</a></li>
+          <li><a href="https://siphazdebrecen.hu" target="_blank">siphazdebrecen.hu</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Elérhetőség</h4>
+        <ul>
+          <li><a href="tel:+36302699018">+36 30 269 9018</a></li>
+          <li><a href="#">4032 Debrecen</a></li>
+          <li><a href="#">Tarján u. 37.</a></li>
+          <li><a href="#">H–P 8–16 · Szo 8–12</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 GV Group Befektető Kft. | Cégjegyzékszám: 09-09-026901 | Adószám: 25189139-2-09</span>
+      <span class="footer-domain">sippaneldebrecen.hu</span>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── NAV + SCROLL TOP ──
+const nav = document.getElementById('mainNav');
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  scrollTopBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+// ── HERO BG LOAD ──
+window.addEventListener('load', () => {
+  const bg = document.getElementById('heroBg');
+  if(bg) bg.classList.add('loaded');
+});
+
+// ── HAMBURGER ──
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobileMenu);
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// ── STAT COUNTER ──
+function animateCount(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const dur = 1800, step = target / (dur / 16);
+  let cur = 0;
+  const t = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.floor(cur);
+    if(cur >= target) clearInterval(t);
+  }, 16);
+}
+let counted = false;
+const statsEl = document.querySelector('.stats-row');
+if(statsEl) {
+  new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting && !counted) {
+      counted = true;
+      document.querySelectorAll('[data-target]').forEach(animateCount);
+    }
+  }, {threshold:.3}).observe(statsEl);
+}
+
+// ── SCROLL REVEAL ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      ro.unobserve(e.target);
+    }
+  });
+}, {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── FILTER ──
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    showingAll = true;
+    document.querySelectorAll('.model-card').forEach(card => {
+      if(f === 'all' || card.dataset.size === f) {
+        card.style.display = 'block';
+        card.classList.remove('hidden-card');
+      } else {
+        card.style.display = 'none';
+        card.classList.add('hidden-card');
+      }
+    });
+    document.getElementById('showMoreBtn').style.display =
+      f === 'all' ? 'inline-flex' : 'none';
+  });
+});
+
+// ── SHOW MORE ──
+let showingAll = false;
+function toggleModels() {
+  const hidden = document.querySelectorAll('.model-card.hidden-card');
+  const btn = document.getElementById('showMoreBtn');
+  if(!showingAll) {
+    hidden.forEach(c => { c.classList.remove('hidden-card'); c.style.display = 'block'; });
+    showingAll = true;
+    btn.innerHTML = 'Kevesebbet mutat <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>';
+  } else {
+    document.querySelectorAll('.model-card').forEach((c, i) => {
+      if(i >= 6) { c.classList.add('hidden-card'); c.style.display = 'none'; }
+    });
+    showingAll = false;
+    btn.innerHTML = 'Mutass többet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
+    document.getElementById('modellek').scrollIntoView({behavior:'smooth'});
+  }
+}
+
+// ── CONTACT FORM ──
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const ok  = document.getElementById('formOk');
+  const err = document.getElementById('formErr');
+  ok.style.display = 'none'; err.style.display = 'none';
+  btn.textContent = 'Küldés...'; btn.disabled = true;
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/galiimre.gi@gmail.com', {
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body: new FormData(this)
+    });
+    const data = await res.json();
+    if(data.success === 'true' || data.success === true) {
+      ok.style.display = 'block'; this.reset();
+    } else { err.style.display = 'block'; }
+  } catch(ex) { err.style.display = 'block'; }
+  finally { btn.textContent = 'Üzenet elküldése →'; btn.disabled = false; }
+});
+</script>
+</body>
+</html>
