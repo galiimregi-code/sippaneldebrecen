@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /wp-admin/
-Disallow: /wp-content/
 
 Sitemap: https://sippaneldebrecen.hu/sitemap.xml
